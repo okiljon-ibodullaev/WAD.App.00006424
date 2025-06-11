@@ -1,0 +1,78 @@
+<div class="container mt-4">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h2 class="mb-3 text-center">{{ isEdit ? 'Edit Task' : 'Add Task' }}</h2>
+  
+      <!-- Task Name -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Task Name</label>
+        <input
+          formControlName="name"
+          type="text"
+          class="form-control"
+          id="name"
+          required
+        />
+        @if (form.controls['name'].errors && form.controls['name'].touched) {
+        <span  class="text-danger">
+          Task Name is required and must be at least 3 characters.
+        </span>
+    }
+      </div>
+  
+      <!-- Task Description -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Task Description</label>
+        <textarea
+          formControlName="description"
+          class="form-control"
+          id="description"
+          rows="3"
+          required
+        ></textarea>
+        @if (form.controls['description'].errors && form.controls['description'].touched) {
+        <span  class="text-danger">
+          Task Description is required.
+        </span>
+    }
+      </div>
+  
+      <!-- Task Status -->
+      <div class="mb-3">
+        <label for="status" class="form-label">Task Status</label>
+        <select formControlName="status" class="form-select" id="status" required>
+          <option value="" disabled selected>Select a status</option>
+          <option value="Open">Open</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Completed">Completed</option>
+        </select>
+        @if (form.controls['status'].errors && form.controls['status'].touched) { 
+        <span * class="text-danger">
+          Task Status is required.
+        </span>
+    }
+      </div>
+  
+      <!-- User Selection -->
+      <div class="mb-3">
+        <label for="userId" class="form-label">Assign User</label>
+        <select formControlName="userId" class="form-select" id="userId" required>
+          <option value="" disabled selected>Select a user</option>
+          @for (user of (users$ | async); track user) {
+          <option [value]="user.id">{{ user.name }}</option>
+          }
+        </select>
+        @if (form.controls['userId'].errors && form.controls['userId'].touched) { 
+        <span class="text-danger">
+          Assigning a user is required.
+        </span>
+    }
+      </div>
+  
+      <!-- Form Actions -->
+      <div class="d-flex justify-content-end">
+        <a [routerLink]="'/tasks'" class="btn btn-secondary me-2">Cancel</a>
+        <button class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+      </div>
+    </form>
+  </div>
+  

@@ -1,0 +1,44 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Icon Logo with ID -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <i class="fas fa-tasks me-2"></i> <!-- FontAwesome Icon -->
+      <span>TaskTracker App</span>
+    </a>
+
+    <!-- Collapsible Menu for Smaller Screens -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/users'">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/tasks'">Tasks</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container mt-4">
+  <router-outlet></router-outlet>
+</main>
+
+
+
+<footer class="bg-dark text-white text-center py-3">
+  <p class="mb-0">
+    Made by 0006424
+  </p>
+  <p>
+    <a href="https://github.com/okiljonibodullaev/WAD.App.00006424" class="text-white me-3">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+  </p>
+</footer>

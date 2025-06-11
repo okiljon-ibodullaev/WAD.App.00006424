@@ -1,0 +1,36 @@
+<div class="container mt-4">
+    
+    
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h2 class="mb-3 text-center">{{ isEdit ? 'Edit User' :  'Add User' }}</h2>
+        
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Username</label>
+            <input formControlName="name" type="text" class="form-control" id="name"  required>
+            @if (form.controls['name'].errors && form.controls['name'].touched) {
+                <span class="text-red-400">Name is required</span>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input formControlName="email" type="email" class="form-control" id="email" required>
+            @if (form.controls['email'].errors && form.controls['email'].touched) {
+                <span class="text-red-400">Email should be valid</span>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <input formControlName="role" type="text" class="form-control" id="role"  required>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <a [routerLink]="'/users'" class="btn btn-secondary me-2">Cancel</a>
+            <button class="btn btn-primary">Submit</button>
+        </div>
+
+       
+    </form>
+</div>
